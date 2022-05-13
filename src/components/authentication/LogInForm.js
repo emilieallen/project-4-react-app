@@ -8,8 +8,6 @@ import { HEROKU_API_URL } from "../../config"
 function LogInForm() {
     const [formData, setFormData] = useState({})
     const [errorMessage, setErrorMessage] = useState(null)
-    // const [errorMessageRegister, setErrorMessageRegister] = useState(null)
-    // const [loginMessage, setLoginMessage] = useState(null)
   
     const onChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -25,7 +23,7 @@ function LogInForm() {
         if (res.data.access) {
           localStorage.setItem("accesstoken", res.data.access)
           localStorage.setItem("refreshtoken", res.data.refresh)
-          navigate("/Home")
+          navigate("/")
         }
       } catch (e) {
         setErrorMessage(e.response.data.message)
@@ -34,6 +32,7 @@ function LogInForm() {
 
     return (
     <>
+    {errorMessage ? <article className="message is-danger has-text-danger-dark is-large m-6 has-text-centered">Issue with the request</article> : ""}
     <div className="container is-flex is-justify-content-center">
         <form className="box has-text-centered">
             <div className="field">

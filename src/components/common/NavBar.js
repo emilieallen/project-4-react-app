@@ -46,8 +46,7 @@ function Layout() {
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
-                <Link to="/Home" className="navbar-item">Home</Link>
-                <Link to="/MySpace" className="navbar-item">MySpace</Link>
+                {isLoggedIn ? <Link to="/MyPics" className="navbar-item">MyPics</Link> : ""}
                 {
                     !isLoggedIn ?
                         <button onClick={(e)=>{onClickLogin(e)}} className="button is-light">Log in</button>
@@ -62,17 +61,6 @@ function Layout() {
       <Outlet />
       <br></br>
     </main>
-    {/* <footer className="footer has-navbar-fixed-bottom">
-      <div className="content has-text-centered is-primary">
-        <p>Our app collects data available on the <a href="https://carboncloud.com/" target="_blank">Carbon Cloud API</a>
-        </p>
-        <Link to="about">
-          <p>
-            <strong>About</strong>
-          </p>
-        </Link>
-      </div>
-    </footer> */}
     </>
   )
 }

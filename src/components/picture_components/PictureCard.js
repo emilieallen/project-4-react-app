@@ -1,8 +1,8 @@
 import React from "react"
 import {useState} from "react";
 
-function PictureCard() {
-
+function PictureCard(props) {
+    
     const [modalStatus, setModalStatus] = useState(false)
 
     function pictureOnClick(e) {
@@ -26,17 +26,17 @@ function PictureCard() {
                     <div className="card has-background-light">
                         <div className="card-image">
                             <figure className="image is-4by3">
-                                <img src="https://i.ibb.co/9vF6XQT/ED681814-7-AD9-47-FC-AF76-4-EDBB212-EDB0-1-201-a.jpg"></img>
+                                <img src={props.picture.pictureUrl}></img>
                             </figure>
                         </div>
                         <div className="card-content has-text-centered p-2">
-                            <p className="subtitle">This is a title</p>
-                            <p>This is a description</p>
+                            <p className="subtitle">{props.picture.name}</p>
+                            <p>{props.picture.description}</p>
                         </div>
                         <footer className="card-footer ">
-                            <p className="card-footer-item">Location</p>
-                            <p className="card-footer-item">Settings</p>
-                            <p className="card-footer-item">Camera</p>
+                            <p className="card-footer-item">{props.picture.location}</p>
+                            <p className="card-footer-item">{props.picture.settings}</p>
+                            <p className="card-footer-item">{props.picture.camera}</p>
                         </footer>
                     </div>
                 </div>
@@ -48,19 +48,15 @@ function PictureCard() {
 
     return (
     <>
-    <section className="m-5">
-        <div className="tile is-ancestor">
-            <div className="tile is-parent is-4 is-clickable" onClick={(e)=> pictureOnClick(e)}>
-                <div className="tile is-child card">
-                    <div className="card-image">
-                        <figure className="image is-4by3">
-                            <img src="https://i.ibb.co/9vF6XQT/ED681814-7-AD9-47-FC-AF76-4-EDBB212-EDB0-1-201-a.jpg"></img>
-                        </figure>
-                    </div>
-                </div>
+    <div className="column is-one-third">
+        <div className="tile is-child card is-clickable" onClick={(e)=> pictureOnClick(e)}>
+            <div className="card-image">
+                <figure className="image ">
+                    <img src={props.picture.pictureUrl}></img>
+                </figure>
             </div>
         </div>
-    </section>
+    </div>
     </>
     )
 }
