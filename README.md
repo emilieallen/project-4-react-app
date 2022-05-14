@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# SEI Project 4: Shutterspeed
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+Shutterspeed is an application designed for photography enthusiasts. The idea is to allow users to share their best shots with peers. Each picture comes with a full description of the settings, location etc.
 
-In the project directory, you can run:
+The app has been deployed with Netlify/Heroku and is available here.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Intro](./images/project-intro-pic.PNG "Main Page")
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Brief
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Build a full-stack application by making your own backend and your own frontend.
+* Use a Python Django API using Django REST Framework to serve your data from a Postgres database.
+* Consume your API with a separate front-end built with React.
+* Be a complete product which most likely means multiple relationships and CRUD functionality for at least a couple of models.
+* Be deployed online so it’s publicly accessible.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
 
-### `npm run eject`
+Frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* React.js
+* Axios
+* React router dom
+* Bulma
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Python
+* Django
+* Django REST Framework
+* PostgreSQL
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Development Tools
 
-## Learn More
+* Insomnia
+* TablePlus
+* Git & GitHub
+* npm / poetry
+* Excalidraw
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Heroku
+* Netlify
 
-### Code Splitting
+## Development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Front-end Design
 
-### Analyzing the Bundle Size
+![Drawing](./images/exca.PNG "Drawing")
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Data Models
 
-### Making a Progressive Web App
+![DB](./images/QuickDBD-export.PNG "DB")
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Django Models
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+```
+from django.db import models
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Create your models here.
 
-### `npm run build` fails to minify
+CATEGORY = [
+    (1, 'Night'),
+    (2, 'Landscape'),
+    (3, 'Urban'),
+    (4, 'Architecture'),
+    (5, 'Portrait'),
+    (6, 'Other')
+]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+class Picture(models.Model):
+    """
+    A model for pictures.
+    """
+
+    name = models.CharField(max_length=150)
+    description = models.CharField(max_length=100)
+
+    category = models.IntegerField(
+        choices=CATEGORY
+        )
+
+    location = models.CharField(max_length=50)
+    picture_url = models.URLField()
+    camera = models.CharField(max_length=30)
+    settings = models.CharField(max_length=50)
+
+    added_by = models.ForeignKey(
+        'users.User',
+        related_name='added_picture',
+        on_delete=models.DO_NOTHING,
+        blank=True
+    )
+
+    def __str__(self):
+        """Formats entries in the Admin panel"""
+        return f'{self.name}'
+
+```
+
+4. React App
+
+![DB](./images/react1.PNG "DB")
+![DB](./images/reac2.PNG "DB")
+![DB](./images/react3.PNG "DB")
+![DB](./images/react4.PNG "DB")
+
+
+## Limitations
+
+Due to the time constraint, the following functionalities are yet to be implemented:
+
+* filter pictures on theme (tags currently inactive)
+* find a photographer (selection currently without options)
+* follow a photographer and save/download a picture
+* allow user to edit/delete his own picture

@@ -24,6 +24,7 @@ function LogInForm() {
           localStorage.setItem("accesstoken", res.data.access)
           localStorage.setItem("refreshtoken", res.data.refresh)
           navigate("/")
+          window.location.reload(false);
         }
       } catch (e) {
         setErrorMessage(e.response.data.message)
