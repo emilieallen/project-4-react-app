@@ -4,7 +4,7 @@
 
 Shutterspeed is an application designed for photography enthusiasts. The idea is to allow users to share their best shots with peers. Each picture comes with a full description of the settings, location etc.
 
-The app has been deployed with Netlify/Heroku and is available [https://shutterspeed-react.netlify.app].
+The app has been deployed with Netlify/Heroku and is available https://shutterspeed-react.netlify.app.
 
 
 
