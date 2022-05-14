@@ -28,7 +28,7 @@ function UploadPage() {
   
     const onSubmit = async (e) => {
       e.preventDefault()
-
+      console.log(formData)
       formData['category'] = categoryMap[formData['category']]
       formData['addedBy'] = Number(formData['addedBy'])
       try {
@@ -44,7 +44,7 @@ function UploadPage() {
         setErrorMessage(e.response.statusText)
       }
     }
-
+    console.log(formData)
     return (
     <>
     {errorMessage ? <article className="message is-danger has-text-danger-dark is-large m-6 has-text-centered">Issue with the request</article> : ""}
@@ -104,7 +104,7 @@ function UploadPage() {
             <div className="field">
                 <label className="label">Username</label>
                 <div className="control">
-                    <input className="input is-danger" type="number" name="addedBy" onChange={onChange}></input>
+                    <input className="input is-danger" type="text" name="addedBy" onChange={onChange}></input>
                 </div>
             </div>
             <button className="button has-background-danger-light has-text-danger-dark is-rounded" onClick={onSubmit}><strong>Upload</strong></button>

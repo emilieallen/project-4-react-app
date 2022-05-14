@@ -37,7 +37,7 @@ function MyPicsPage() {
     if (!pictureData) {
         return <p>Pictures Loading...</p>
     }
-    console.log(pictureData)
+
     return (
     <>
     <section className="hero is-light is-small">
