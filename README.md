@@ -8,7 +8,7 @@ The app has been deployed with Netlify/Heroku and is available [https://shutters
 
 
 
-![Intro](./images/project-intro-pic.PNG "Main Page")
+![Intro](./images/project-intro-pic.png "Main Page")
 
 
 
@@ -54,11 +54,11 @@ Deployment
 
 1. Front-end Design
 
-![Drawing](./images/exca.PNG "Drawing")
+![Drawing](./images/exca.png "Drawing")
 
 2. Data Models
 
-![DB](./images/QuickDBD-export.PNG "DB")
+![DB](./images/QuickDBD-export.png "DB")
 
 3. Django Models
 
@@ -110,10 +110,10 @@ class Picture(models.Model):
 
 4. React App
 
-![DB](./images/react1.PNG "DB")
-![DB](./images/reac2.PNG "DB")
-![DB](./images/react3.PNG "DB")
-![DB](./images/react4.PNG "DB")
+![DB](./images/react1.png "DB")
+![DB](./images/reac2.png "DB")
+![DB](./images/react3.png "DB")
+![DB](./images/react4.png "DB")
 
 
 ## Limitations
